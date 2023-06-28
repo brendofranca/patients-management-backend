@@ -15,7 +15,12 @@ services:
     image: mongo
     ports:
       - "27017:27017"
+    volumes:
+      - mongodbdata:/data/db 
     networks:
       - mynetwork
 networks:
   mynetwork:
+  
+volumes:
+  mongodbdata:
