@@ -1,6 +1,6 @@
 # Patients Management Backend
 
-This repository contains the backend code for a patients management application.
+This repository contains the backend code for a patient management application.
 
 ## Getting Started
 
@@ -24,7 +24,7 @@ docker-compose up
 ```
 This command will build the Docker images and start the containers for the backend application.
 
-1. Once the containers are up and running, you can access the backend API at [Swagger UI](https://localhost:8443/swagger/index.html).
+1. Once the containers are up and running, you can access the backend API documentation at [Swagger UI](https://localhost:8443/swagger/index.html){:target="_blank"}.
 2. You can now proceed with setting up and starting the frontend application to interact with the backend API. Refer to the frontend documentation for more details.
 
 # Additional Notes
