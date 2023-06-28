@@ -11,7 +11,7 @@ To start the application using Docker, follow these steps:
 2. Clone this repository to your local machine.
 
 ```shell
-git clone https://github.com/your-username/patients-management-backend.git
+git clone https://github.com/brendofranca/patients-management-backend.git
 ```
 3. Navigate to the root directory of the cloned repository.
 ```shell
