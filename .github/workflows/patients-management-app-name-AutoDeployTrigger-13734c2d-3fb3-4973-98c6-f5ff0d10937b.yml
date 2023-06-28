@@ -1,0 +1,42 @@
+name: Trigger auto deployment for patients-management-app-name
+
+# When this action will be executed
+on:
+  # Automatically trigger it when detected changes in repo
+  push:
+    branches: 
+      [ master ]
+    paths:
+    - '**'
+    - '.github/workflows/patients-management-app-name-AutoDeployTrigger-13734c2d-3fb3-4973-98c6-f5ff0d10937b.yml'
+
+  # Allow mannually trigger 
+  workflow_dispatch:
+      
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout to the branch
+        uses: actions/checkout@v2
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.PATIENTSMANAGEMENTAPPNAME_AZURE_CREDENTIALS }}
+
+      - name: Build and push container image to registry
+        uses: azure/container-apps-deploy-action@v1
+        with:
+          appSourcePath: ${{ github.workspace }} 
+          registryUrl: patientsmanagementwebapi.azurecr.io
+          registryUsername: ${{ secrets.PATIENTSMANAGEMENTAPPNAME_REGISTRY_USERNAME }}
+          registryPassword: ${{ secrets.PATIENTSMANAGEMENTAPPNAME_REGISTRY_PASSWORD }}
+          containerAppName: patients-management-app-name
+          resourceGroup: patients-management-rg
+          imageToBuild: patientsmanagementwebapi.azurecr.io/patients-management-app-name:${{ github.sha }}
+          
+
+     
+
