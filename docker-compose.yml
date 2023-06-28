@@ -6,9 +6,6 @@ services:
     build:
       context: .
       dockerfile: src/Patients.Management.WebApi/Dockerfile
-    environment:
-      - MongoDbSettings__ConnectionString=mongodb://mongodb:27017
-      - MongoDbSettings__DatabaseName=mongodb
     networks:
       - mynetwork
   mongodb:
