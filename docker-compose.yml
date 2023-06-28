@@ -9,7 +9,7 @@ services:
     networks:
       - mynetwork
   mongodb:
-    image: mongo
+    image: ${DOCKER_REGISTRY-}mongo
     ports:
       - "27017:27017"
     volumes:
