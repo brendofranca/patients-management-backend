@@ -3,6 +3,9 @@ version: '3.4'
 services:
   patients.management.webapi:
     image: ${DOCKER_REGISTRY-}patientsmanagementwebapi
+    environment:
+      - MongoDbSettings__ConnectionString=mongodb://mongodb:27017
+      - MongoDbSettings__DatabaseName=mongodb
     build:
       context: .
       dockerfile: src/Patients.Management.WebApi/Dockerfile
