@@ -6,12 +6,21 @@ services:
     environment:
       - MongoDbSettings__ConnectionString=mongodb://mongodb:27017
       - MongoDbSettings__DatabaseName=mongodb
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
     build:
       context: .
       dockerfile: src/Patients.Management.WebApi/Dockerfile
     container_name: patients_management_webapi_container
+    ports:
+      - "8080:80"
+      - "8443:443"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
     networks: 
       - mynetwork
+
   mongodb:
     image: ${DOCKER_REGISTRY-}mongo
     container_name: patients_management_mongo_container
@@ -21,8 +30,9 @@ services:
       - mongodbdata:/data/db 
     networks:
       - mynetwork
+
 networks:
   mynetwork:
-  
+
 volumes:
   mongodbdata:
